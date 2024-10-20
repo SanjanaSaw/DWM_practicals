@@ -1,0 +1,59 @@
+Aim: To implement OLAP operations: Slice, Dice, Roll up, Drill down, and Pivot based on experiment 1 case 
+study. 
+
+Theory: 
+
+3.1 Roll up (drill-up): 
+ROLLUP is used in tasks involving subtotals. It creates subtotals at any level of aggregation needed, from the most 
+detailed up to a grand total i.e., climbing up a concept hierarchy for the dimension such as time or geography. Example: 
+A Query could involve a ROLLUP of year>month>day or country>state>city. 
+Input & Output 
+Explanation: 
+The SQL query calculates total sales for each store in an ice cream parlor, using the ROLLUP function to create summary 
+levels. It joins sales data with store information and groups the results by store ID to provide a hierarchical view of 
+total sales 
+. 
+
+3.2Drill down (Roll down): 
+This is a reverse of the ROLL UP operation discussed above. The data is aggregated from a higher-level 
+summary to a lower-level summary/detailed data. 
+Input & Output 
+Explanation: 
+The SQL query calculates total sales for each product in each store, joining sales data with product and store 
+information. It groups the results by store ID and product ID to provide a detailed view of sales performance. 
+
+3.3  Slicing  
+A slice in a multidimensional array is a column of data corresponding to a single value for one or more 
+members of the dimension. It helps the user to visualize and gather the information specific to a 
+dimension. 
+Input & Output 
+Explanation: 
+The SQL query calculates the total sales for product 1 in store 1. It joins sales data with product information, filters 
+for store 1, groups by product ID, and orders the result. 
+
+3.4 Dicing: 
+Dicing is similar to slicing, but it works a little bit differently. When one thinks of slicing, filtering is 
+done to focus on a particular attribute. Dicing, on the other hand, is more of a zoom feature that selects 
+a subset over all the dimensions, but for specific values of the dimension. 
+Input & Output 
+Explanation: 
+The SQL query calculates the total sales for products 1 and 2 in store 1. It joins sales data with product information, 
+filters for store 1 and specific product IDs, groups by product ID, and orders the result. 
+
+3.5 Pivot 
+Pivot otherwise known as Rotate changes the dimensional orientation of the cube, i.e. rotates the data axes to view 
+the data from different perspectives. Pivot groups data with different dimensions. The below cubes show 2D 
+representation of Pivot. 
+Input & Output 
+Explanation: 
+The SQL query calculates the total sales of products 1, 2, and 3 for each store. It joins sales data with store 
+information, uses conditional expressions to sum the sales amounts for each product, groups by store ID, and orders 
+the result 
+
+
+CONCLUSION: 
+From this practical, I learned how to apply OLAP (Online Analytical Processing) operations such as Slice, Dice, roll 
+up, Drill down, and Pivot to analyse and manipulate data efficiently. These operations are valuable tools for gaining 
+insights from complex datasets, as demonstrated in our experiment with online transaction data. They allow for 
+dynamic exploration and summarization of data, enabling better decision-making and a deeper understanding of 
+spending behaviours and financial patterns.

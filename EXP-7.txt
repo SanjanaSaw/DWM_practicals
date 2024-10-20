@@ -1,0 +1,131 @@
+code
+
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+from google.colab import files
+uploaded = files.upload()
+
+------------------------------------------
+
+import io
+df = pd.read_csv(io.BytesIO(uploaded['Facts.csv']))
+print(df)
+
+import matplotlib.pyplot as plt
+plt.scatter(df.f_id,df.vacant_room)
+plt.title('Scatter Plot')
+plt.xlabel('f_id')
+plt.ylabel('vacant_room')
+plt.show()
+
+km= KMeans(n_clusters=2)
+y_pre = km.fit_predict(df[['f_id','vacant_room']])
+y_pre
+
+df['cluster']=y_pre
+df.head()
+
+df1=df[df.cluster==0]
+df2=df[df.cluster==1]
+df3=df[df.cluster==2]
+plt.scatter(df1.f_id,df1.vacant_room,color='green')
+plt.scatter(df2.f_id,df2.vacant_room,color='red')
+plt.scatter(df3.f_id,df3.vacant_room,color='blue')
+plt.scatter(km.cluster_centers_[:,0],km.cluster_centers_[:,1],color='yellow')
+plt.title('K-Means Clustering')
+plt.xlabel('f_id')
+plt.ylabel('vacant_room')
+plt.legend
+plt.show()
+
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
+scaler.fit(df[['f_id']])
+df[['f_id']] = scaler.transform(df[['f_id']])
+scaler.fit(df[['vacant_room']])
+df[['vacant_room']] = scaler.transform(df[['vacant_room']])
+df.head()
+
+
+plt.scatter(df.f_id,df.vacant_room)
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+Aim: To implement Clustering Algorithm. (K means). 
+
+Softwares used: Java/C/Python 
+
+Theory: 
+Clustering is the process of grouping the data into classes or clusters, so that objects 
+within a cluster have high similarity in comparison to one another but are very dissimilar 
+to objects in other clusters. Dissimilarities are assessed based on the attribute values 
+describing the objects. Often, distance measures are used. Clustering has its roots in 
+many areas, including data mining, statistics, biology, and machine learning. 
+
+Clustering is also called data segmentation in some applications because clustering 
+partitions large data sets into groups according to their similarity. Clustering can also 
+be used for outlier detection, where outliers (values that are “far away” from any 
+cluster) may be more interesting than common cases. Applications of outlier detection 
+include the detection of credit card fraud and the monitoring of criminal activities in 
+electronic commerce 
+ 
+ 
+Partitioning Methods 
+ 
+ 
+Given D, a data set of n objects, and k, the number of clusters to form, a partitioning 
+algorithm organizes the objects into k partitions (k _ n), where each partition 
+represents a cluster. The clusters are formed to optimize an objective partitioning 
+criterion, such as a dissimilarity function based on distance, so that the objects 
+within a cluster are “similar,” whereas the objects of different clusters are 
+“dissimilar” in terms of the data set attributes. 
+
+Centroid-Based Technique: The k-Means Method 
+The k-means algorithm takes the input parameter, k, and partitions a set of n objects into k 
+clusters so that the resulting intracluster similarity is high but the intercluster similarity is 
+low. Cluster similarity is measured in regard to the mean value of the objects in a cluster, 
+which can be viewed as the cluster’s centroid or center of gravity. 
+
+Advantages 
+• Easy to implement 
+• With a large number of variables, K-‐Means may be computationally faster 
+than hierarchical clustering (if K is small). 
+• k-‐Means may produce Higher clusters than hierarchical clustering 
+• An instance can change cluster (move to another cluster) when the centroids are 
+re-‐ computed. 
+
+Disadvantages 
+• Difficult to predict the number of clusters (K-‐Value) 
+• Initial seeds have a strong impact on the final results 
+• The order of the data has an impact on the final results 
+• Sensitive to scale: rescaling your datasets (normalization or standardization) 
+will completely change results 
+
+Applications: 
+The K-means clustering algorithm is used to find groups which have not been 
+explicitly labeled in the data. This can be used to confirm business assumptions about 
+what types of groups exist or to identify unknown groups in complex data sets. Once 
+the algorithm has been run and the groups are defined, any new data can be easily 
+assigned to the correct group. 
+
+This is a versatile algorithm that can be used for any type of grouping. Some 
+examples of use cases are: 
+Behavioral segmentation: 
+Segment by purchase history 
+Segment by activities on application, website, or platform 
+Define personas based on interests 
+Create profiles based on activity monitoring Inventory categorization: 
+Group inventory by sales activity 
+Group inventory by manufacturing metrics 
+Sorting sensor measurements: 
+Detect activity types in motion sensors 
+Group images 
+Separate audio 
+Identify groups in health monitoring 
+Detecting bots or anomalies: 
+Separate valid activity groups from bots 
+Group valid activity to clean up outlier detection

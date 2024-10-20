@@ -1,0 +1,34 @@
+Aim: Case study on building Data Warehouse/ Data Mart. 
+
+Software used: Any online drawing tool.
+
+Theory:
+
+1.	Detailed Problem statement
+The ice cream parlor wants to gain a better understanding of its
+customers and their buying habits. They need to be able to track sales trends, 
+identify popular flavors, and understand customer demographics. They also want to
+use data to improve marketing campaigns and personalize customer experiences.
+
+2.	Analysis to be done
+•	Customer Data: Collect data on customer demographics, purchase history, loyalty program memberships, and feedback.
+•	Product Data: Track sales volume, inventory levels, and popularity of different flavors and toppings.
+•	Sales Data: Analyze sales trends, peak hours, and revenue generated from different promotions.
+•	Marketing Data: Track the effectiveness of different marketing campaigns, including social media, email, and advertising.
+
+3.	How the above analysis improves the business i.e. above problem definition
+•	Targeted Marketing: Identify customer segments and tailor marketing campaigns to their preferences.
+•	Inventory Management: Predict demand for different flavors and optimize inventory levels.
+•	Product Development: Identify popular flavors and trends to create new and innovative products.
+•	Customer Service: Understand customer feedback and address issues to improve customer satisfaction.
+
+4.	Design Information Package diagram
+
+5.	Details of Dimension table
+
+6.	Fact table
+
+7.	Star Schema
+
+8.	Snowflake Schema 
+

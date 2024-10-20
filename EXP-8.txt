@@ -1,0 +1,94 @@
+
+Aim: Implementation of any one Hierarchical Clustering method
+
+Software Used: Java/ Python
+
+Theory:A Hierarchical clustering method works via grouping data into a tree of clusters. 
+Hierarchical clustering begins by treating every data points as a separate cluster. 
+Then, it repeatedly executes the subsequent steps:
+1. Identify the 2 clusters which can be closest together, and
+2. Merge the 2 maximum comparable clusters. We need to continue these steps until all the clusters are merged together.
+In Hierarchical Clustering, the aim is to produce a hierarchical series of nested clusters. A diagram called Dendrogram 
+(A Dendrogram is a tree-like diagram that statistics the sequences of merges or splits) graphically represents this hierarchy 
+and is an inverted tree that describes the order in which factors are merged (bottom-up view) or cluster are break up (top-down view).
+
+There are two types of hierarchical clustering methods:
+
+1. Agglomerative hierarchical clustering:
+This bottom-up strategy starts by placing each object in its own cluster and then merges these atomic clusters into larger and larger clusters, until all of the objects are in a single cluster or until certain termination conditions are satisfied.
+
+2. Divisive hierarchical clustering:
+This top-down strategy does the reverse of agglomerative hierarchical clustering by starting with all objects in one cluster.It subdivides the cluster into smaller and smaller pieces, until each object forms a cluster on its own or until it satisfies certain termination conditions, such as a desired number of clusters is obtained or the diameter of each cluster is within a certain threshold.
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+Agglomerative Algorithm: (AGNES)
+Given
+-a set of N objects to be clustered
+-an N*N distance matrix ,
+
+
+The basic process of clustering id this:
+Step1: Assign each object to a cluster so that for N objects we have N clusters each containing just one Object.
+Step2: Let the distances between the clusters be the same as the distances between the objects they contain.
+Step3: Find the most similar pair of clusters and merge them into a single cluster so that we now have one cluster less.
+Step4: Compute distances between the new cluster and each of the old clusters.
+Step5: Repeat steps 3 and 4 until all items are clustered into a single cluster of size N.
+• Step 4 can be done in different ways and this distinguishes single and complete linkage.
+-> For complete-linkage algorithm:
+1. clustering process is terminated when the maximum distance between nearest clusters exceeds an arbitrary threshold.
+-> For single-linkage algorithm:
+
+1. clustering process is terminated when the minimum distance between nearest clusters exceeds an arbitrary threshold
+
+
+
+Formula 
+
+   1
+-------    ∑       ∑    d(x, y)
+|A|.|B|   x € A   y € B
+
+
+////////////////////////////////////////
+code
+ 
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+
+import seaborn as sns 
+
+from google.colab import files
+uploaded = files.upload()
+
+
+#########
+
+import io
+data = pd.read_csv(io.BytesIO(uploaded['store-1 (1).csv']))
+
+from sklearn.preprocessing import normalize
+df = pd.DataFrame(data)
+
+data_scaled = normalize(df)
+data_scaled = pd.DataFrame(data_scaled, columns=df.columns)
+
+
+
+import scipy.cluster.hierarchy as shc
+plt.figure(figsize=(8,7))
+plt.title("Dendrograms")
+dend = shc.dendrogram(shc.linkage(df,method='ward'))
+plt.show()
+
+plt.figure(figsize=(8,7))
+plt.title("Dendrograms")
+dend = shc.dendrogram(shc.linkage(df,method='ward'))
+plt.axhline(y=6,color='r',linestyle='--')
+
+from sklearn.cluster import AgglomerativeClustering
+cluster = AgglomerativeClustering(n_clusters=2, linkage='ward')
+cluster.fit_predict(data_scaled)

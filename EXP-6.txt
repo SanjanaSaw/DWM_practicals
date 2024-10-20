@@ -1,0 +1,29 @@
+Aim: Perform data preprocessing task and demonstrate Classification, Clustering, Association 
+algorithm on data sets using data mining tool(WEKA / R tool) 
+
+Softwares used: WEKA 
+
+Theory: 
+Waikato Environment for Knowledge Analysis (Weka) is a popular suite of machine learning 
+software written in Java, developed at the University of Waikato, New Zealand. It is free software 
+licensed under the GNU General Public License. 
+Weka is a workbench that contains a collection of visualization tools and algorithms for data 
+analysis and predictive modeling, together with graphical user interfaces for easy access to these 
+functions. 
+This original version was primarily designed as a tool for analyzing data from agricultural domains, 
+but the more recent fully Java-based version (Weka 3), for which development started in 1997, is 
+now used in many different application areas, in particular for educational purposes and research. 
+
+Advantages of Weka include: 
+• Free availability under the GNU General Public License. Portability, since it is fully 
+implemented in the Java programming language and thus runs on almost any modern 
+computing platform. 
+• A comprehensive collection of data preprocessing and modeling techniques. 
+• Ease of use due to its graphical user interfaces.
+
+CONCLUSION: 
+ 
+The different mining algorithms of data mining were studied and the need for association mining 
+algorithm was recognized and understood. Thus, we perform data Pre-processing task and Demonstrate 
+performing Classification, Clustering, Association algorithm on data sets using data mining using 
+WEKA tool

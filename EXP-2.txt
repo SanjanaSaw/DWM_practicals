@@ -1,0 +1,70 @@
+Aim: Implementation of all dimension tables and fact table based on experiment 1 case study. 
+ 
+Software used: MySQL 
+ 
+Theory: 
+ 
+• Problem definition 
+The ice cream parlor wants to gain a better understanding of its customers and their buying 
+habits. They need to be able to track sales trends, identify popular flavors, and understand 
+customer demographics. They also want to use data to improve marketing campaigns and 
+personalize customer experiences. 
+We will implement of all dimension tables and fact table based on experiment 1 case study 
+ 
+• Fact table details 
+ 
+Ice Cream Parlour Inventory Managment Fact Table 
+ 
+Attributes Description 
+Customer_Id Foreign Key referencing Customer dimension table 
+Store Id Foreign Key referencing Store dimension table 
+Product Id Foreign Key referencing Product dimension table 
+Sales_Id Represents Sales of the product 
+Date Foreign Key referencing Time dimension table 
+Quantity Represents Quantity of the product 
+Total_sales_Amount Represents Sales amount of the store 
+ 
+ 
+•  Dimension table details 
+Store dimension 
+ 
+Attributes Description 
+Store_ Id Unique key to identify the] store 
+Name Represents name of the store  
+Location Represents location of the store 
+List item Represents the item in the store 
+Store size Represents the size of the store 
+ 
+Product dimension 
+ 
+Attributes Description 
+Product Id Unique key to identify the Product 
+Flavor Represents Flavor of the product 
+Size Represents size of the product 
+Price Represents price of the product 
+Category Represents category of the product 
+Toppings Represents toppings of the product 
+ 
+ 
+Customer dimension 
+ 
+Attributes Description 
+Email Represents Email of the customer 
+Customer Id Unique key to identify the customer 
+Name Represents Name of the customer 
+Address Represents Address of the customer 
+Phone no Represents Phone no of the customer 
+Age Represents Age of the customer 
+ 
+Time dimension 
+ 
+Attributes Description 
+Date Unique key to identify the customer 
+Time Represents time of the customer 
+Month Represents Month of the store 
+Year Represents Year of the store 
+Day_of _week Represents the Day_of_week of the store 
+ 
+ 
+ 
+CONCLUSION: Successfully implemented all the dimension tables and fact table based on experiment 1 case study. 

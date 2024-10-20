@@ -1,0 +1,104 @@
+Aim: Implementation of Association rule Mining.(Apriori algorithm) 
+
+Software Used: Java/C/Python 
+
+Theory: 
+Frequent patterns are patterns (such as itemsets, subsequences, or substructures) that appear in a data set frequently. For example, 
+a set of items, such as milk and bread, that appear frequently together in a transaction data set is a frequent itemset. Finding such 
+frequent patterns plays an essential role in mining associations, correlations, and many other interesting relationships among data. 
+Moreover, it helps in data classification, clustering, and other data mining tasks as well. 
+Thus, frequent pattern mining has become an important data mining task and a focused 
+theme in data mining research. 
+
+The Apriori Algorithm: Finding Frequent Itemsets Using Candidate Generation 
+Apriori is a seminal algorithm proposed by R. Agrawal and R. Srikant in 1994 for mining frequent itemsets for Boolean 
+association rules. The name of the algorithm is based on the fact that the algorithm uses prior knowledge of frequent itemset 
+properties, as we shall see following. Apriori employs an iterative approach known as a level-wise search, where k-itemsets are 
+usedtoexplore (k+1)-itemsets. First, the setof frequent 1-itemsets is found by scanning the database to accumulate the count for 
+each item, and collecting those items that satisfy minimum support. The resulting set is denoted L1.Next, L1 is used to find L2, 
+the set of frequent 2-itemsets, which is used to find L3, and so on, until no more frequent k-itemsets can be found. The finding of 
+each Lk requires one full scan of the database.
+
+To improve the efficiency of the level-wise generation of frequent itemsets, an important property called 
+the Apriori property, presented below, is used to reduce the search space.We will first describe this property, 
+and then show an example illustrating its use. 
+
+Apriori property: All nonempty subsets of a frequent itemset must also be frequent A 
+two-step process is followed, consisting of join and prune actions. 
+
+Advantages 
+• It is an easy-to-implement and easy-to-understand algorithm. 
+• It can be used on large itemsets. 
+
+Disadvantages 
+• Sometimes, it may need to find a large number of candidate rules which can be 
+computationally expensive. 
+• Calculating support is also expensive because it has to go through the entire database.
+
+Applications: 
+• Market Basket Analysis 
+• Network Forensics analysis 
+• Analysis of diabetic 
+databases 
+• Adverse drug reaction 
+detection Ecommerce 
+• Customer analysis
+
+code
+
+# Install the apyori package
+!pip install apyori
+
+-----------------------
+
+# Import required libraries
+import numpy as np 
+import pandas as pd
+import matplotlib.pyplot as plt
+from apyori import apriori
+
+# Upload the file in Google Colab
+from google.colab import files
+uploaded = files.upload()
+
+---------------------------
+
+# Load the dataset from the uploaded file
+store_data = pd.read_csv(io.BytesIO(uploaded['store-1.csv']))
+store_data.head()
+
+# Convert the dataset into a list of lists (records)
+records = []
+num_columns = store_data.shape[1]  # Get the number of columns dynamically
+
+for i in range(0, len(store_data)):  # Iterate over rows using len(store_data)
+    records.append([str(store_data.values[i, j]) for j in range(0, num_columns)])  # Use num_columns for column range
+
+# Generate association rules using the Apriori algorithm
+association_rules = apriori(records, min_support=0.0045, min_confidence=0.2, min_lift=3, min_length=2)
+association_results = list(association_rules)
+
+# Print the number of association rules found
+print(f"Number of association rules found: {len(association_results)}")
+
+# Display the first association rule found (if exists)
+if len(association_results) > 0:
+    print("First association rule:")
+    print(association_results[0])
+
+# Loop through the association results and print the details of each rule
+for item in association_results:
+    pair = item.items
+    items = [x for x in pair]
+    print("Rule: " + items[0] + " -> " + items[1])
+    
+    # Print the support, confidence, and lift of the rule
+    support = item.support
+    ordered_statistics = item.ordered_statistics[0]
+    confidence = ordered_statistics.confidence
+    lift = ordered_statistics.lift
+    
+    print(f"Support: {support}")
+    print(f"Confidence: {confidence}")
+    print(f"Lift: {lift}")
+    print("=====================================")
